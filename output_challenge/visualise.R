@@ -1,4 +1,5 @@
 library(tidyverse)
+library(ggrepel)
 library(ve.utils)
 
 # load example run
@@ -24,17 +25,28 @@ soil_c_pool_median <-
   group_by(Pool) %>%
   mutate(time = row_number())
 
-ggplot(soil_c_pool_median) +
+soil_c_pool_median %>%
+  mutate(label = if_else(time == max(time),
+                         as.character(Pool),
+                         NA_character_)) %>%
+  ggplot()+
   geom_line(aes(time, value,
-                colour = Pool,
-                linetype = Pool),
+                colour = Pool),
             size = 1) +
+  geom_text_repel(aes(time, value, label = label),
+                  nudge_x = 1,
+                  nudge_y = 0.1,
+                  max.overlaps = 15,
+                  direction = "y",
+                  hjust = 0,
+                  na.rm = TRUE) +
   scale_y_sqrt() +
-  scale_colour_viridis_d(option = "cividis") +
+  scale_x_continuous(limits = c(1, 30)) +
+  scale_colour_viridis_d() +
   labs(x = "Time step [month]",
        y = expression(paste("Soil C [kg ", m^{-3}, "]"))) +
   theme_bw() +
-  theme(legend.key.width = unit(1, "cm"))
+  theme(legend.position = "none")
 ggsave(
   "output_challenge/fig/soil_c_pool.png",
   width = 8,
@@ -57,17 +69,28 @@ soil_n_pool_median <-
   group_by(Pool) %>%
   mutate(time = row_number())
 
-ggplot(soil_n_pool_median) +
+soil_n_pool_median %>%
+  mutate(label = if_else(time == max(time),
+                         as.character(Pool),
+                         NA_character_)) %>%
+  ggplot()+
   geom_line(aes(time, value,
-                colour = Pool,
-                linetype = Pool),
+                colour = Pool),
             size = 1) +
+  geom_text_repel(aes(time, value, label = label),
+                  nudge_x = 1,
+                  nudge_y = 0.05,
+                  max.overlaps = 15,
+                  direction = "y",
+                  hjust = 0,
+                  na.rm = TRUE) +
   scale_y_sqrt() +
-  scale_colour_viridis_d(option = "cividis") +
+  scale_x_continuous(limits = c(1, 30)) +
+  scale_colour_viridis_d() +
   labs(x = "Time step [month]",
        y = expression(paste("Soil N [kg ", m^{-3}, "]"))) +
   theme_bw() +
-  theme(legend.key.width = unit(1, "cm"))
+  theme(legend.position = "none")
 ggsave(
   "output_challenge/fig/soil_n_pool.png",
   width = 8,
@@ -90,17 +113,28 @@ soil_p_pool_median <-
   group_by(Pool) %>%
   mutate(time = row_number())
 
-ggplot(soil_p_pool_median) +
+soil_p_pool_median %>%
+  mutate(label = if_else(time == max(time),
+                         as.character(Pool),
+                         NA_character_)) %>%
+  ggplot()+
   geom_line(aes(time, value,
-                colour = Pool,
-                linetype = Pool),
+                colour = Pool),
             size = 1) +
+  geom_text_repel(aes(time, value, label = label),
+                  nudge_x = 1,
+                  nudge_y = 0.01,
+                  max.overlaps = 15,
+                  direction = "y",
+                  hjust = 0,
+                  na.rm = TRUE) +
   scale_y_sqrt() +
-  scale_colour_viridis_d(option = "cividis") +
+  scale_x_continuous(limits = c(1, 30)) +
+  scale_colour_viridis_d() +
   labs(x = "Time step [month]",
        y = expression(paste("Soil P [kg ", m^{-3}, "]"))) +
   theme_bw() +
-  theme(legend.key.width = unit(1, "cm"))
+  theme(legend.position = "none")
 ggsave(
   "output_challenge/fig/soil_p_pool.png",
   width = 8,
@@ -123,17 +157,28 @@ soil_enzyme_median <-
   group_by(Pool) %>%
   mutate(time = row_number())
 
-ggplot(soil_enzyme_median) +
+soil_enzyme_median %>%
+  mutate(label = if_else(time == max(time),
+                         as.character(Pool),
+                         NA_character_)) %>%
+  ggplot()+
   geom_line(aes(time, value,
-                colour = Pool,
-                linetype = Pool),
+                colour = Pool),
             size = 1) +
+  geom_text_repel(aes(time, value, label = label),
+                  nudge_x = 1,
+                  nudge_y = 0.01,
+                  max.overlaps = 15,
+                  direction = "y",
+                  hjust = 0,
+                  na.rm = TRUE) +
   scale_y_sqrt() +
-  scale_colour_viridis_d(option = "cividis") +
+  scale_x_continuous(limits = c(1, 30)) +
+  scale_colour_viridis_d() +
   labs(x = "Time step [month]",
        y = expression(paste("Soil enzyme [kg C ", m^{-3}, "]"))) +
   theme_bw() +
-  theme(legend.key.width = unit(1, "cm"))
+  theme(legend.position = "none")
 ggsave(
   "output_challenge/fig/soil_enzyme.png",
   width = 8,
@@ -187,17 +232,28 @@ litter_pool_median <-
   group_by(Pool) %>%
   mutate(time = row_number())
 
-ggplot(litter_pool_median) +
+litter_pool_median %>%
+  mutate(label = if_else(time == max(time),
+                         as.character(Pool),
+                         NA_character_)) %>%
+  ggplot()+
   geom_line(aes(time, value,
-                colour = Pool,
-                linetype = Pool),
-            linewidth = 1) +
+                colour = Pool),
+            size = 1) +
+  geom_text_repel(aes(time, value, label = label),
+                  nudge_x = 1,
+                  nudge_y = 0.01,
+                  max.overlaps = 15,
+                  direction = "y",
+                  hjust = 0,
+                  na.rm = TRUE) +
   scale_y_sqrt() +
-  scale_colour_viridis_d(option = "cividis") +
+  scale_x_continuous(limits = c(1, 30)) +
+  scale_colour_viridis_d() +
   labs(x = "Time step [month]",
        y = expression(paste("Litter [kg C ", m^{-2}, "]"))) +
   theme_bw() +
-  theme(legend.key.width = unit(1, "cm"))
+  theme(legend.position = "none")
 ggsave(
   "output_challenge/fig/litter_pool.png",
   width = 8,
@@ -219,19 +275,30 @@ litter_mineralisation_median <-
   group_by(Pool) %>%
   mutate(time = row_number())
 
-ggplot(litter_mineralisation_median) +
+litter_mineralisation_median %>%
+  mutate(label = if_else(time == max(time),
+                         as.character(Pool),
+                         NA_character_)) %>%
+  ggplot()+
   geom_line(aes(time, value,
-                colour = Pool,
-                linetype = Pool),
-            linewidth = 1) +
+                colour = Pool),
+            size = 1) +
+  geom_text_repel(aes(time, value, label = label),
+                  nudge_x = 1,
+                  nudge_y = 0.01,
+                  max.overlaps = 15,
+                  direction = "y",
+                  hjust = 0,
+                  na.rm = TRUE) +
   scale_y_sqrt() +
-  scale_colour_viridis_d(option = "cividis") +
+  scale_x_continuous(limits = c(1, 30)) +
+  scale_colour_viridis_d() +
   labs(x = "Time step [month]",
        y = expression(paste("Litter mineralisation [kg ", m^{-3}, day^{-1}, "]"))) +
   theme_bw() +
-  theme(legend.key.width = unit(1, "cm"))
+  theme(legend.position = "none")
 ggsave(
-  "output_challenge/fig/soil_c_pool.png",
+  "output_challenge/fig/litter_mineralisation.png",
   width = 8,
   height = 4,
   units = "in",
