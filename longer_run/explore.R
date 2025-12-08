@@ -25,7 +25,7 @@ ve_run("mwe/ve_example/config",
        "mwe/ve_example/out/logfile.log")
 
 # read results
-results <- load_result("ve_example/out")
+results <- load_result("longer_run/ve_example/out")
 
 # names(results$var)
 
