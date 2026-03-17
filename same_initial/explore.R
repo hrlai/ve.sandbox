@@ -41,5 +41,6 @@ soil_c_pool_pom_init <- get_var(initials, "soil_c_pool_pom")
 soil_c_pool_pom <- get_var(results, "soil_c_pool_pom")
 soil_c_pool_pom <- cbind(soil_c_pool_pom_init, soil_c_pool_pom)
 
+par(mfrow = (c(1, 2)))
 matplot(t(soil_c_pool_maom), type = "l")
 matplot(t(soil_c_pool_pom), type = "l")
