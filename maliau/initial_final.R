@@ -42,3 +42,15 @@ delta_rel <-
 ggplot(delta_rel) +
   geom_boxplot(aes(variable, value)) +
   coord_flip()
+
+
+
+# load all continuous data
+results <- load_result("maliau/out")
+
+soil_c_pool_lmwc <- get_var(results, "soil_c_pool_lmwc")
+soil_p_pool_maom <- get_var(results, "soil_p_pool_maom")
+
+par(mfrow = (c(1, 2)))
+matplot(t(soil_c_pool_lmwc), type = "l")
+matplot(t(soil_p_pool_maom), type = "l")
