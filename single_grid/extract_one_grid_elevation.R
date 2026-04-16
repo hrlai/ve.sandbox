@@ -62,10 +62,6 @@ extract_one_grid <- function(nc, out) {
 extract_one_grid(
   nc = "single_grid/data/elevation_maliau_2010_2020_100m.nc",
   out = "single_grid/data_single_grid/elevation_maliau_2010_2020_100m.nc")
-# plant
-extract_one_grid(
-  nc = "single_grid/data/plant_input_data_Maliau_50x50.nc",
-  out = "single_grid/data_single_grid/plant_input_data_Maliau_50x50.nc")
 # soil
 extract_one_grid(
   nc = "single_grid/data/soil_maliau.nc",

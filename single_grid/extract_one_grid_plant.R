@@ -37,12 +37,6 @@ var.put.nc(ncout, "plant_pft_propagules", cbind(ncvar_get(
   start = c(1, 1),
   count = c(-1, 1)
 )))
-var.put.nc(ncout, "downward_shortwave_radiation", cbind(ncvar_get(
-  nc_in,
-  "downward_shortwave_radiation",
-  start = c(1, 1),
-  count = c(-1, 1)
-)))
 var.put.nc(ncout, "subcanopy_vegetation_biomass", (ncvar_get(
   nc_in,
   "subcanopy_vegetation_biomass",
@@ -57,7 +51,6 @@ var.put.nc(ncout, "subcanopy_seedbank_biomass", (ncvar_get(
 )))
 var.put.nc(ncout, "cell_id", 0)
 var.put.nc(ncout, "pft", dims$pft$vals)
-var.put.nc(ncout, "time_index", dims$time_index$vals)
 
 # Sync data to file and close.
 sync.nc(ncout)
