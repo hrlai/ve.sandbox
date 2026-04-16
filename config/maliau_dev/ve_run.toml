@@ -1,0 +1,7 @@
+[core]
+[hydrology]
+[abiotic_simple]
+[animal]
+static = true
+[litter]
+[soil]

@@ -1,8 +1,7 @@
 # VE files
 *ve_example*
-maliau/config
-maliau/data
-maliau/out
+data/
+out/
 
 # History files
 .Rhistory
